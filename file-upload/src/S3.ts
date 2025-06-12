@@ -2,7 +2,13 @@ import Aws from 'aws-sdk';
 import { MetadataFile } from './FileManager';
 import { Storage } from './Storage';
 
-const CORS_ORIGINS = (process.env.S3_CORS_ORIGINS || '').split(',');
+// When S3_CORS_ORIGINS isn't specified we default to allowing any origin.
+// The previous implementation produced `[""]` which caused AWS SDK to
+// reject the CORS configuration. Filter out empty strings so the configuration
+// is always valid.
+const CORS_ORIGINS = (process.env.S3_CORS_ORIGINS || '*')
+  .split(',')
+  .filter(Boolean);
 
 export interface S3Options {
   s3Sdk?: Aws.S3;
