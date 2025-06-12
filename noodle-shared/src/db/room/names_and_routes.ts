@@ -3,6 +3,11 @@ import cryptoRandomString from 'crypto-random-string';
 import args from '../../lib/args';
 import prisma from '../prisma';
 
+const logger = (global as any).log || {
+  app: { info: console.log },
+  error: { error: console.error, warn: console.warn },
+};
+
 const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
 const NUMBERS = '0123456789';
 const LOWERCASE_AND_NUMBERS = LOWERCASE + NUMBERS;
@@ -81,13 +86,10 @@ export class NamesAndRoutes {
       isUnique = await this.isUniqueIdString(idString);
       iterations++;
       if (iterations == 101) {
-        // FIXME: don't rely on some global 'log' variable which may not exist
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-        log.error.warn('Over 100 iterations genereating unique room ID...');
+        logger.error.warn('Over 100 iterations genereating unique room ID...');
       }
       if (iterations == 1001) {
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-        log.error.error('Over 1000 iterations genereating unique room ID...');
+        logger.error.error('Over 1000 iterations genereating unique room ID...');
       }
     }
     return idString;

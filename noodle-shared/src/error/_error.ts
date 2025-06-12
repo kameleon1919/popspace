@@ -1,5 +1,9 @@
 import prisma from '../db/prisma';
 
+const logger = (global as any).log || {
+  error: { info: console.error },
+};
+
 const ERROR_CODES = {
   // General
   UNEXPECTED_ERROR: 'UNEXPECTED_ERROR',
@@ -47,10 +51,8 @@ export default {
     httpCode: number,
     noodleCode: string,
   ) => {
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-    if (log && log.error) {
-      // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-      log.error.info(error);
+    if (logger && logger.error) {
+      logger.error.info(error);
     }
     return prisma.error.create({
       data: {
