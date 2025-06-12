@@ -1,5 +1,10 @@
 import redis from 'redis';
 
+const logger = (global as any).log || {
+  app: { info: console.log },
+  error: { error: console.error },
+};
+
 export default class RedisBase {
   client: any;
   constructor(credentials) {
@@ -25,12 +30,10 @@ export default class RedisBase {
           - but shared shouldn't reference globals other than shared
           - we could do shared.log, and declare log as a synonym downstream
       */
-      // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-      log.app.info('Redis is ready');
+      logger.app.info('Redis is ready');
     });
     this.client.on('error', (error) => {
-      // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-      log.error.error('Error initializing redis', error);
+      logger.error.error('Error initializing redis', error);
     });
   }
 

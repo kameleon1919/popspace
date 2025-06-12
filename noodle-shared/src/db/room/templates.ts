@@ -5,6 +5,11 @@ import { SYSTEM_USER_ID } from '../constants';
 import prisma from '../prisma';
 import data from './data';
 
+const logger = (global as any).log || {
+  app: { info: console.log },
+  error: { error: console.error },
+};
+
 let mockCreator: Actor;
 
 const getMockCreator = async () => {
@@ -13,8 +18,7 @@ const getMockCreator = async () => {
   }
   mockCreator = await accounts.actorById(SYSTEM_USER_ID);
   if (!mockCreator) {
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-    log.app.info(
+    logger.app.info(
       `Creating mock actor with id ${SYSTEM_USER_ID} for creating widgets in room templates.`,
     );
     mockCreator = await prisma.actor.create({
@@ -25,8 +29,7 @@ const getMockCreator = async () => {
         admin: true,
       },
     });
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'log'.
-    log.app.info('Successfully created mock widget creator!', mockCreator);
+    logger.app.info('Successfully created mock widget creator!', mockCreator);
   }
   return mockCreator;
 };
