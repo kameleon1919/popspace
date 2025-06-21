@@ -150,6 +150,8 @@ cd hermes
 # Vérifier que le chemin DB est : file:../noodle-shared/prisma/dev.db
 # Pas : file:../noodle-shared/prisma/../noodle-shared/prisma/dev.db
 ```
+✅ Chemin corrigé : `hermes/.env` mis à jour avec
+`DATABASE_URL=file:../noodle-shared/prisma/dev.db`
 
 ### **ÉTAPE 2 : Réparer NOODLE-API**
 ```bash
