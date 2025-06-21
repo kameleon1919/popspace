@@ -1,7 +1,8 @@
-import React from 'react';
 import { CssBaseline, MuiThemeProvider, StylesProvider } from '@material-ui/core';
 import { FlaggProvider } from 'flagg/dist/react';
+import * as React from 'react';
 import { Router } from 'react-router';
+
 import { SoundEffectProvider } from './components/SoundEffectProvider/SoundEffectProvider';
 import { Toaster } from './components/Toaster/Toaster';
 import { featureFlags } from './featureFlags';
@@ -10,9 +11,9 @@ import { Routes } from './Routes';
 import AppStateProvider from './state';
 import { lavender as theme } from './theme/theme';
 
-export const App: React.FC = () => {
-  console.log('🚀 PopSpace App - VERSION FINALE: Avec Routes (va probablement planter)');
-  
+export interface IAppProps {}
+
+export const App: React.FC<IAppProps> = () => {
   return (
     <FlaggProvider featureFlags={featureFlags}>
       <StylesProvider injectFirst>
@@ -30,4 +31,4 @@ export const App: React.FC = () => {
       </StylesProvider>
     </FlaggProvider>
   );
-}; 
+};

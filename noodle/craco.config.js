@@ -4,6 +4,16 @@ const CracoAlias = require('craco-alias');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
+// Fonction pour obtenir la version de manière sécurisée
+function getVersion() {
+  try {
+    return git.short();
+  } catch (error) {
+    console.warn('Git info not available, using fallback version');
+    return 'dev-' + Date.now().toString(36);
+  }
+}
+
 console.log('Customizing Webpack');
 module.exports = {
   plugins: [
@@ -21,7 +31,7 @@ module.exports = {
       config.plugins.push(
         ...[
           new webpack.DefinePlugin({
-            VERSION: JSON.stringify(git.short()),
+            VERSION: JSON.stringify(getVersion()),
           }),
         ]
       );
