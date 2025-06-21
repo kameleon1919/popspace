@@ -60,6 +60,8 @@ DATABASE_URL="file:../noodle-shared/prisma/dev.db"
 LIVEKIT_URL=wss://livekit.pincoop.com
 LIVEKIT_API_KEY=APIEuR2wyHk43uZ
 LIVEKIT_API_SECRET=KZFAInnav84qGErT5JQVnqKYIjCo8llxiVCn4IJehrR
+USER_FILES_DIRECTORY=./user-files
+PUBLIC_URL=http://localhost:8889
 ```
 
 ### **Corrections Code**
@@ -161,7 +163,14 @@ npm rebuild sharp --verbose
 # Option B : Modifier file-upload pour utiliser mock Sharp
 ```
 
-### **ÉTAPE 3 : Test Complet**
+### **ÉTAPE 3 : Vérifier les variables d'environnement**
+```bash
+# S'assurer que noodle-api/.env contient au moins :
+USER_FILES_DIRECTORY=./user-files
+PUBLIC_URL=http://localhost:8889
+```
+
+### **ÉTAPE 4 : Test Complet**
 ```bash
 # Terminal 1
 .\start_services.bat
