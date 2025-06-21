@@ -5,6 +5,9 @@ echo === Démarrage des services PopSpace ===
 echo DATABASE_URL="file:./prisma/dev.db" > noodle-shared\.env
 echo DATABASE_URL="file:../noodle-shared/prisma/dev.db" > hermes\.env
 echo NODE_ENV=development >> hermes\.env
+echo DATABASE_URL="file:../noodle-shared/prisma/dev.db" > noodle-api\.env
+echo USER_FILES_DIRECTORY=./user-files >> noodle-api\.env
+echo PUBLIC_URL=http://localhost:8889 >> noodle-api\.env
 
 :: Variables d'environnement
 set NODE_OPTIONS=--openssl-legacy-provider
