@@ -269,12 +269,8 @@ export class SocketConnection extends EventEmitter {
   /**
    * Current status of the active websocket connection
    */
-  get readyState():
-    | typeof WebSocket.OPEN
-    | typeof WebSocket.CLOSED
-    | typeof WebSocket.CLOSING
-    | typeof WebSocket.CONNECTING {
-    return this.ws.readyState;
+  get readyState(): 0 | 1 | 2 | 3 {
+    return this.ws.readyState as 0 | 1 | 2 | 3;
   }
 
   get isConnected() {

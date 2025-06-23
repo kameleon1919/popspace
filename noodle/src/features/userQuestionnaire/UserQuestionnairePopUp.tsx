@@ -83,7 +83,7 @@ export const UserQuestionnairePopup: React.FC<IUserQuestionnairePopupProps> = ()
           </IconButton>
         </Box>
         <Widget
-          id={currentQuestionnaire?.id}
+          id={currentQuestionnaire?.id || ''}
           className={classes.typeform}
           onSubmit={() => {
             markComplete();

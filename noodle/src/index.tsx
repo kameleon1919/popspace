@@ -10,7 +10,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 let version: string;
 try {
-  version = `with-app@${VERSION}`;
+  version = `with-app@${typeof VERSION !== 'undefined' ? VERSION : 'dev'}`;
 } catch (err) {
   version = 'unknown';
 }
