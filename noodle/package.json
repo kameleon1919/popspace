@@ -4,8 +4,6 @@
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "@babel/core": "^7.11.6",
-    "@craco/craco": "^6.1.0",
     "@feedback-fish/react": "^1.2.1",
     "@harelpls/storybook-addon-materialui": "^2.0.0",
     "@material-ui/core": "4.11.4",
@@ -115,6 +113,7 @@
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^16.12.0",
     "react-text-mask": "^5.4.3",
     "react-timeago": "^6.2.1",
@@ -131,11 +130,10 @@
     "simple-quadtree": "^0.1.3",
     "start-server-and-test": "^1.10.8",
     "storybook-addon-material-ui": "^0.9.0-alpha.21",
-    "ts-jest": "^26.2.0",
+    "ts-jest": "^27.1.5",
     "turndown": "^7.0.0",
     "twilio": "^3.53.0",
     "twilio-video": "^2.13.1",
-    "typescript": "^4.1.3",
     "use-double-click": "^1.0.5",
     "uuid": "^7.0.2",
     "volume-meter": "^2.0.1",
@@ -152,9 +150,6 @@
     "workbox-streams": "^6.1.0",
     "yup": "^0.32.9",
     "zustand": "3.2.0"
-  },
-  "resolutions": {
-    "babel-loader": "8.1.0"
   },
   "lint-staged": {
     "src/**/*.{json,css,scss,md}": [
@@ -231,6 +226,11 @@
     }
   },
   "devDependencies": {
-    "@types/express": "^4.17.13"
+    "@babel/core": "^7.27.0",
+    "@babel/preset-env": "^7.27.0",
+    "@babel/preset-react": "^7.27.0",
+    "@craco/craco": "^7.0.0",
+    "@types/express": "^4.17.13",
+    "typescript": "^5.8.0"
   }
 }
