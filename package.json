@@ -11,9 +11,7 @@
     "unicorn/component"
   ],
   "resolutions": {
-    "babel-loader": "8.1.0",
-    "jest": "26.6.0",
-    "webpack": "4.44.2"
+    "jest": "^27.5.1"
   },
   "scripts": {
     "precontainerize": "yarn build-lib && yarn build",

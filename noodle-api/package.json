@@ -11,8 +11,8 @@
     "logs": "pm2 logs noodle_api",
     "dev": "node-dev index.js -r dotenv/config",
     "console": "node --experimental-repl-await ./scripts/console.js",
-    "test:all": "NODE_ENV=test jest --runInBand",
-    "test:one": "NODE_ENV=test node scripts/run_scenario.js"
+    "test:all": "cross-env NODE_ENV=test jest --runInBand",
+    "test:one": "cross-env NODE_ENV=test node scripts/run_scenario.js"
   },
   "repository": {
     "type": "git",
@@ -32,13 +32,13 @@
     "@withso/file-upload": "^0.6.0",
     "@withso/noodle-shared": "^2.0.1",
     "aws-sdk": "^2.928.0",
-    "axios": "^0.21.1",
+    "axios": "1.7.9",
     "camelcase-keys": "^6.2.2",
     "cheerio": "^1.0.0-rc.10",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "dotenv": "^8.6.0",
-    "express": "^4.17.1",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
     "express-session": "^1.17.1",
     "livekit-server-sdk": "^0.5.10",
     "log4js": "^6.3.0",
@@ -49,9 +49,10 @@
     "session": "^0.1.0",
     "snakecase-keys": "^4.0.2",
     "twilio": "^3.63.1",
-    "uuid": "^8.3.2"
+    "uuid": "10.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "factory-girl": "^5.0.4",
     "jest": "^27.0.4",
     "jest-cli": "^27.0.4",

@@ -80,3 +80,23 @@ declare module 'simple-quadtree' {
 }
 
 declare module '@typeform/embed-react';
+
+// Temporary fixes for TypeScript warnings during migration
+declare module '*.module.css' {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+// WebSocket type fixes
+declare global {
+  interface WebSocket {
+    readyState: 0 | 1 | 2 | 3;
+  }
+}
+
+// Animation type fixes for react-spring + emotion
+declare module '@emotion/react' {
+  export interface Theme {}
+}
+
+export {};
